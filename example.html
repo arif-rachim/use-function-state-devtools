@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hello</title>
+    <script>
+        function onButtonClicked() {
+            window.postMessage({
+                greeting: 'hello there!',
+                date : new Date(),
+                source: 'use-function-state-devtools'
+            }, '*');
+        }
+        window.addEventListener('usefunctionstatedevtoolsopen',() => {
+            window.postMessage({
+                greeting: 'I noticed you are open !',
+                source: 'use-function-state-devtools'
+            }, '*');
+        });
+        setTimeout(() => {
+            window.postMessage({
+                greeting: 'Window getting loaded',
+                source: 'use-function-state-devtools'
+            }, '*');
+        },1000);
+
+    </script>
+</head>
+<body>
+<h1>Just to test chrome dev tools !</h1>
+<button id="button" onclick="onButtonClicked()">Send message to devtools</button>
+</body>
+</html>
